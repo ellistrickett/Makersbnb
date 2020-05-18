@@ -12,8 +12,9 @@ Create a clone of the Airbnb website!
 ```
 - Until a user has confirmed a booking request, that space can still be booked for that night.
 
-as a landlord,
-my place is available until i have confirmed a request.
+As a user,
+So that I can decide who books the space,
+My space is still available to book until I have confirmed a request.
 
 ```
 
@@ -21,9 +22,10 @@ my place is available until i have confirmed a request.
 
 - Nights for which a space has already been booked should not be available for users to book that space.
 
-as a user, 
-so that a space cant be double booked,
-spaces arent available on dates that have already been booked.
+As a user, 
+So that a space can't be double booked,
+I shouldn't be able to book a space on those dates
+
 
 ```
 
@@ -31,12 +33,12 @@ spaces arent available on dates that have already been booked.
 
 - Any signed-up user can request to hire any space for one night, and this should be approved by the user that owns that space.
 
-as a customer,
-so that i can rent a space, 
+As a user,
+So that I can rent a space, 
 I need to be able to request the property on a certain date.
 
-as a landlord,
-so that i can rent my space,
+As a user,
+So that I can rent my space,
 I need to be able to see my requests and approve them.
 
 ```
@@ -44,34 +46,35 @@ I need to be able to see my requests and approve them.
 
 - Users should be able to offer a range of dates where their space is available.
 
-as a landlord, 
-once I have posted an advert,
-I make the room available to book over a range of dates.
+As a user, 
+So I can show when the space is available,
+I want to make the space available to book over a range of dates.
 
 ```
 ```
 
 - Users should be able to name their space, provide a short description of the space, and a price per night.
 
-as a landlord, 
-so i can name my advert,
-I can give my advert a name.
+As a user, 
+So I can name my space,
+I can give my space a name.
 
-As a lanlord,
-so that i can advertise my space,
-I can write a short description.
+As a user,
+So that I can advertise my space,
+I can write a short description for my space.
 
-as a landlord, 
-so that I can give it a price,
-I can give it a price.
+As a user, 
+So that others know how much my space costs,
+I can give it a price per night.
 
 ```
 ```
 
 - Users can list multiple spaces.
 
-As a landlord,
-I can post adverts.
+As a user,
+So I can advertise multiple spaces,
+I am able to list multiple spaces.
 
 ```
 ```
@@ -79,13 +82,23 @@ I can post adverts.
 - Any signed-up user can list a new space.
 
 As a user, 
-so i can have an account,
+So I can have an account,
 I am able to sign up.
 
 As a user, 
-so i can post an ad,
+So I can interact with the website,
 I am able to log in.
 
+As a user,
+So I can create a new listing,
+I am able to list a new space.
+
+
+```
+
+
+```
+- Extras
 
 As a user, 
 so i can book an ad,
@@ -95,4 +108,3 @@ As a user,
 I can view rooms.
 
 ```
-
