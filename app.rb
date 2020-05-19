@@ -9,5 +9,15 @@ class MakersBnB < Sinatra::Base
     erb :"signup"
   end
 
+  post '/sign-up-user' do
+    $name = params[:name]
+    redirect '/welcome'
+  end
+
+  get '/welcome' do
+    @name = $name
+    erb :"welcome"
+  end
+
   run! if app_file == $0
 end
