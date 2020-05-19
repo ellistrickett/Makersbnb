@@ -1,5 +1,5 @@
 require_relative './setup_test_database'
-require_relative './features/booking_helper'
+require_relative './features/_booking_helper'
 
 ENV['ENVIRONMENT'] = 'test'
 

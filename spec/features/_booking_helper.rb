@@ -1,6 +1,4 @@
 
-
-
 def add_booking
   click_on 'Add Space'
   fill_in 'name', with: 'Room'

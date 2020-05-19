@@ -3,9 +3,8 @@ require 'pg'
 class Booking
 
   def self.book_space(user_id:, space_id:, date:)
-    connect_to_database.exec("INSERT INTO booking(user_id, space_id, date) VALUES('#{user_id}', '#{space_id}', '#{date}');")
+    connect_to_database.exec("INSERT INTO booking (user_id, space_id, date) VALUES('#{user_id}', '#{space_id}', '#{date}');")
   end
-
 
   private
 
