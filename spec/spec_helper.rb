@@ -1,6 +1,10 @@
 require_relative './setup_test_database'
 
+<<<<<<< HEAD
 ENV['ENVIRONMENT'] = 'test'
+=======
+ENV['ENVIROMENT'] = 'test'
+>>>>>>> space
 
 RSpec.configure do |config|
   config.before(:each) do
