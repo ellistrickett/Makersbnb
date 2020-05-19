@@ -9,5 +9,12 @@ feature 'book space' do
     expect(page).to have_content 'Book a space'
   end
 
+  scenario 'user can request a space' do
+    add_booking
+    visit('/makersbnb/book-space')
+    fill_in 'booking_date', with: '010212'
+    click_button 'Book Space'
+  end
+
 
 end

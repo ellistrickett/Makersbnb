@@ -1,7 +1,10 @@
 require 'sinatra/base'
 require './lib/space'
+require './lib/booking'
 
 class MakersBnB < Sinatra::Base
+  enable :sessions
+
   get '/' do
     'Hello World'
   end
@@ -33,6 +36,10 @@ class MakersBnB < Sinatra::Base
     erb :'makersbnb/book_space'
   end
 
+  post '/makersbnb-book' do
+    Booking.book_space(user_id: '1', space_id:'12', date: params[:date])  #space_id and user_id will be passed as session variables
+    redirect '/makersbnb'
+  end
 
   post '/makersbnb' do
     Space.add_space(user_id: 1, space_name: params[:name], description: params[:description], price: params[:price], dates_available: params[:dates_available])
