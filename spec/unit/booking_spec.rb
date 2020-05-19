@@ -3,10 +3,8 @@ require 'booking'
 describe Booking do
 
   describe '.book_space' do
-  
+
     it 'should be able to book a space' do
-      sign_up
-      log_in
       Booking.book_space(user_id: '1', space_id:'12', date:'010212')
       connect_to_database = PG.connect dbname: 'makersbnb_test'
       booking = connect_to_database.exec("SELECT * FROM booking")
