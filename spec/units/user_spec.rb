@@ -18,7 +18,7 @@ describe User do
     # expect(user.password).to eq 'password123'
   end
 
-  it 'logs in a user' do 
+  it 'logs in a user' do
     User.create(real_name: 'Test', email: 'test@example.com', password: 'password123')
     user = User.login(email: 'test@example.com', password: 'password123')
     expect(user.real_name).to eq 'Test'

@@ -1,15 +1,11 @@
 require 'sinatra/base'
 require './lib/space'
+require './lib/user'
 
 class MakersBnB < Sinatra::Base
-
-enable :sessions
+  enable :sessions
 
   get '/' do
-    'Hello World'
-  end
-
-  get '/users/new' do 
     erb :"signup"
   end
 
@@ -19,22 +15,17 @@ enable :sessions
   end
 
   get '/login' do
-    
     erb :"login"
   end
 
-  post '/log-in-details' do 
+  post '/log-in-details' do
     user = User.login(email: params['email'], password: params['password'])
     session[:user] = user
-    redirect '/welcome'
-  end
-
-  get '/welcome' do 
-    @user = session[:user]
-    erb :"welcome"
+    redirect '/makersbnb'
   end
 
   get '/makersbnb' do
+    @user = session[:user]
     @space = Space.view_spaces
     erb :'makersbnb/space'
   end
