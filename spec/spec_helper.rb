@@ -1,10 +1,6 @@
 require_relative './setup_test_database'
 
-<<<<<<< HEAD
 ENV['ENVIRONMENT'] = 'test'
-=======
-ENV['ENVIROMENT'] = 'test'
->>>>>>> space
 
 RSpec.configure do |config|
   config.before(:each) do
@@ -12,10 +8,9 @@ RSpec.configure do |config|
   end
 end
 
-
 ENV['RACK_ENV'] = 'test'
 
-
+# require our Sinatra app file
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 require 'capybara'

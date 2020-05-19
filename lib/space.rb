@@ -2,8 +2,8 @@ require 'pg'
 
 class Space 
 
-  def self.add_space(space_name:, description:, price:, dates_available:)
-    connect_to_database.exec("INSERT INTO space (space_name, description, price, dates_available) VALUES('#{space_name}', '#{description}', '#{price}', '#{dates_available}');")
+  def self.add_space(user_id:, space_name:, description:, price:, dates_available:)
+    connect_to_database.exec("INSERT INTO space (user_id, space_name, description, price, dates_available) VALUES('#{user_id}', '#{space_name}', '#{description}', '#{price}', '#{dates_available}');")
   end
 
   def self.view_spaces
@@ -13,7 +13,7 @@ class Space
   private
 
   def self.connect_to_database
-    if ENV['ENVIROMENT'] == 'test'
+    if ENV['ENVIRONMENT'] == 'test'
       PG.connect dbname: 'makersbnb_test'
     else
       PG.connect dbname: 'makersbnb'

@@ -18,6 +18,8 @@ class MakersBnB < Sinatra::Base
   get '/welcome' do
     @name = $name
     erb :"welcome"
+  end
+
   get '/makersbnb' do
     @space = Space.view_spaces
     erb :'makersbnb/space'
@@ -28,7 +30,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/makersbnb' do
-    Space.add_space(space_name: params[:name], description: params[:description], price: params[:price], dates_available: params[:dates_available])
+    Space.add_space(user_id: 1, space_name: params[:name], description: params[:description], price: params[:price], dates_available: params[:dates_available])
     redirect '/makersbnb'
   end
 
