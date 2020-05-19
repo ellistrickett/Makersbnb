@@ -3,3 +3,10 @@
 <form action='/makersbnb/add-space' method='get'>
   <input value='Add Space' type='submit'>
 </form>
+
+<% @space.each do |get_space| %>
+  <%= get_space['name'] %>
+  <%= get_space['description'] %>
+  <%= get_space['price'] %>
+  <%= get_space['dates_available'] %>
+<% end %>
