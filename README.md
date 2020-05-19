@@ -172,6 +172,7 @@ I can view rooms.
 | class | methods |
 | --- | --- |
 | Booking | .book_space(name, date) |
+| | .view_book_space |
 | | @price |
 
 | class | methods |

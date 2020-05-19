@@ -10,6 +10,10 @@ class Space
     connect_to_database.exec("SELECT * FROM space")
   end
 
+  def self.delete_space(id:)
+    connect_to_database.exec("DELETE FROM space WHERE id = #{id}")
+  end
+
   private
 
   def self.connect_to_database

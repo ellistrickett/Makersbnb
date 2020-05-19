@@ -43,6 +43,11 @@ class MakersBnB < Sinatra::Base
     erb :'makersbnb/book_space'
   end
 
+  post '/makersbnb/delete-space/:id' do
+    Space.delete_space(id: params[:id])
+    redirect '/makersbnb'
+  end
+
   post '/makersbnb-book' do
     user = session[:user]
     Booking.book_space(user_id: user.user_id, space_id: session[:space_id], date: params[:booking_date])  #space_id and user_id will be passed as session variables
