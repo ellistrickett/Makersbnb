@@ -18,4 +18,19 @@ describe Booking do
 
   end
 
+  describe '.view_book_space' do
+
+    it 'able to return all booked spaces' do
+      Booking.book_space(user_id: '5', space_id:'18', date:'010212')
+      booking = Booking.view_book_space
+
+      booking.each do |booking_object|
+        expect(booking_object['user_id']).to eq '5'
+        expect(booking_object['space_id']).to eq '18'
+        expect(booking_object['date']).to eq '010212'
+      end
+    end
+
+  end
+
 end

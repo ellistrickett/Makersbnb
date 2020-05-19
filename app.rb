@@ -29,6 +29,7 @@ class MakersBnB < Sinatra::Base
 
   get '/makersbnb' do
     @user = session[:user]
+    @booking = Booking.view_book_space
     @space = Space.view_spaces
     erb :'makersbnb/space'
   end

@@ -21,3 +21,13 @@ Your user ID <%= @user.user_id %>
     </li>
   </ul>
 <% end %>
+
+<% @booking.each do |get_booking| %>
+  <ul>
+    <li>
+      User ID: <%= get_booking['user_id'] %>
+      Space ID: <%= get_booking['space_id'] %>
+      Date: <%= get_booking['date'] %>
+    </li>
+  </ul>
+<% end %>

@@ -6,6 +6,10 @@ class Booking
     connect_to_database.exec("INSERT INTO booking (user_id, space_id, date) VALUES('#{user_id}', '#{space_id}', '#{date}');")
   end
 
+  def self.view_book_space
+    connect_to_database.exec("SELECT * FROM booking")
+  end
+
   private
 
   def self.connect_to_database
