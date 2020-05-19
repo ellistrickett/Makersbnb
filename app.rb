@@ -29,6 +29,11 @@ class MakersBnB < Sinatra::Base
     erb :'makersbnb/add_space'
   end
 
+  get '/makersbnb/book-space' do
+    erb :'makersbnb/book_space'
+  end
+
+
   post '/makersbnb' do
     Space.add_space(user_id: 1, space_name: params[:name], description: params[:description], price: params[:price], dates_available: params[:dates_available])
     redirect '/makersbnb'
