@@ -6,6 +6,9 @@ Welcome, <%= @user.real_name %>
   <input value='Add Space' type='submit'>
 </form>
 
+
+
+
 <% @space.each do |get_space| %>
   <ul>
     <li>
@@ -13,6 +16,9 @@ Welcome, <%= @user.real_name %>
       Description: <%= get_space['description'] %>
       Price: <%= get_space['price'] %>
       Dates Available: <%= get_space['dates_available'] %>
+      <form action='/makersbnb/book-space' method='get'>
+        <input value='Book Space' type='submit'>
+      </form>
     </li>
   </ul>
 <% end %>
