@@ -5,3 +5,7 @@ Please log in
   <input type="text" name="password" placeholder="Password">
   <input type="submit" value="Submit">
 </form>
+
+<% if @user == "Failure!"%>
+* You entered incorrect details, please try again!
+<% end %>

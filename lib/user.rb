@@ -21,8 +21,8 @@ class User
 
     if match.any? && match[0]['password'] == password
       User.new(user_id: match[0]['user_id'], real_name: match[0]['real_name'],  email: match[0]['email'], password: match[0]['password'])
-    # else
-    #   "Failure!"
+    else
+      "Failure!"
     end
   end
 

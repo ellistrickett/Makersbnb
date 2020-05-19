@@ -10,5 +10,12 @@ feature 'login' do
     expect(page).to have_content "Welcome, Test"
   end
 
+  scenario 'enters wrong details' do 
+    sign_up
+    fill_in('email', with: 'qwertyuiop')
+    fill_in('password', with: 'qwertyuiop')
+    click_button('Submit')
 
+    expect(page).to have_content "* You entered incorrect details, please try again!"
+  end
 end

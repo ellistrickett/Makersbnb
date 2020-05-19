@@ -15,12 +15,14 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/login' do
+    @user = session[:user]
     erb :"login"
   end
 
   post '/log-in-details' do
     user = User.login(email: params['email'], password: params['password'])
     session[:user] = user
+    redirect '/login' if user == "Failure!"
     redirect '/makersbnb'
   end
 
