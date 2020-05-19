@@ -18,7 +18,12 @@ class User
 
   def self.login(email:, password:)
     match = connect_to_database.exec("SELECT * FROM users WHERE email='#{email}';")
-    User.new(user_id: match[0]['user_id'], real_name: match[0]['real_name'],  email: match[0]['email'], password: match[0]['password']) if match.any? && match[0]['password'] == password
+
+    if match.any? && match[0]['password'] == password
+      User.new(user_id: match[0]['user_id'], real_name: match[0]['real_name'],  email: match[0]['email'], password: match[0]['password'])
+    # else
+    #   "Failure!"
+    end
   end
 
 end
