@@ -119,3 +119,68 @@ As a user,
 I can view rooms.
 
 ```
+
+## Database
+
+`USER` table:
+
+| field | type |
+| --- | --- |
+| USER ID | PRIMARY SERIAL ID |
+| EMAIL | VARCHAR(200) |
+| PASSWORD | VARCHAR(60) |
+| USERNAME | VARCHAR(100) |
+| REAL NAME | VARCHAR(100) |
+
+`SPACE ADVERTISMENT` table:
+
+| field | type |
+| --- | --- |
+| SPACE ID | PRIMARY SERIAL ID |
+| USER ID (host) | VARCHAR(100) (FOREIGN KEY) |
+| NAME OF SPACE | VARCHAR(100) |
+| DESCRIPTION | VARCHAR(250) |
+| PRICE | Integer |
+| AVAILABILTY | Array |
+
+`CONFIRMED BOOKING` table:
+
+| field | type |
+| --- | --- |
+| ID | PRIMARY SERIAL ID |
+| USER ID (guest) | VARCHAR(100) (FOREIGN KEY)  |
+| SPACE ID  | (FOREIGN KEY) |
+| DATE OF BOOKING | DATE |
+
+## Models
+
+| class | methods |
+| --- | --- |
+| user | @spaces |
+| | .log_in	 |
+| | .sign_up |
+
+| class | methods |
+| --- | --- |
+| Space | @name |
+| | @price |
+| | @dates_available |
+| | .add_space(name, description, price, dates_available) |
+| | .view_spaces |
+
+| class | methods |
+| --- | --- |
+| Booking | .book_space(name, date) |
+| | @price |
+
+| class | methods |
+| --- | --- |
+| Request | .see_requests(bookings?) |
+| | .approve_request |
+| | .decline_request |
+| | .add_space(name, description, price, dates_available) |
+| | ._update_dates_available |
+
+
+
+
