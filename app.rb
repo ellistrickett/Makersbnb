@@ -34,21 +34,23 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/makersbnb/add-space' do
-    @user = session[:user]
     erb :'makersbnb/add_space'
   end
 
-  get '/makersbnb/book-space' do
+  get '/makersbnb/book-space/:id' do
+    session[:space_id] = params[:id]
     erb :'makersbnb/book_space'
   end
 
   post '/makersbnb-book' do
-    Booking.book_space(user_id: '1', space_id:'12', date: params[:date])  #space_id and user_id will be passed as session variables
+    user = session[:user]
+    Booking.book_space(user_id: user.user_id, space_id: session[:space_id], date: params[:booking_date])  #space_id and user_id will be passed as session variables
     redirect '/makersbnb'
   end
 
   post '/makersbnb' do
-    Space.add_space(user_id: 1, space_name: params[:name], description: params[:description], price: params[:price], dates_available: params[:dates_available])
+    user = session[:user]
+    Space.add_space(user_id: user.user_id, space_name: params[:name], description: params[:description], price: params[:price], dates_available: params[:dates_available])
     redirect '/makersbnb'
   end
 

@@ -1,22 +1,21 @@
 <h1>Spaces</h1>
 
-Welcome, <%= @user.real_name %>
+Welcome, <%= @user.real_name %> <br/>
+Your user ID <%= @user.user_id %>
 
 <form action='/makersbnb/add-space' method='get'>
   <input value='Add Space' type='submit'>
 </form>
 
-
-
-
 <% @space.each do |get_space| %>
   <ul>
     <li>
+      ID: <%= get_space['id'] %>
       Name: <%= get_space['space_name'] %>
       Description: <%= get_space['description'] %>
       Price: <%= get_space['price'] %>
       Dates Available: <%= get_space['dates_available'] %>
-      <form action='/makersbnb/book-space' method='get'>
+      <form action="/makersbnb/book-space/<%= get_space['id'] %>" method='get'>
         <input value='Book Space' type='submit'>
       </form>
     </li>

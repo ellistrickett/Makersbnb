@@ -16,7 +16,6 @@ feature 'book space' do
     log_in
     add_booking
     click_button 'Book Space'
-    expect(current_path).to eq '/makersbnb/book-space'
     expect(page).to have_content 'Book a space'
   end
 
