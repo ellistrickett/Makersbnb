@@ -1,3 +1,5 @@
+require 'pg'
+
 class Space 
 
   def self.add_space(space_name:, description:, price:, dates_available:)
