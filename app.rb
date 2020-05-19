@@ -5,5 +5,9 @@ class MakersBnB < Sinatra::Base
     'Hello World'
   end
 
+  get '/makersbnb' do
+    erb :'makersbnb/space'
+  end
+
   run! if app_file == $0
 end
