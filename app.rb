@@ -9,5 +9,9 @@ class MakersBnB < Sinatra::Base
     erb :'makersbnb/space'
   end
 
+  get '/makersbnb/add-space' do
+    erb :'makersbnb/add_space'
+  end
+
   run! if app_file == $0
 end
