@@ -5,8 +5,12 @@
 </form>
 
 <% @space.each do |get_space| %>
-  <%= get_space['name'] %>
-  <%= get_space['description'] %>
-  <%= get_space['price'] %>
-  <%= get_space['dates_available'] %>
+  <ul>
+    <li>
+      Name: <%= get_space['space_name'] %>
+      Description: <%= get_space['description'] %>
+      Price: <%= get_space['price'] %>
+      Dates Available: <%= get_space['dates_available'] %>
+    </li>
+  </ul>
 <% end %>
