@@ -9,4 +9,8 @@ describe User do
     expect(user.email).to eq('test@example.com')
     expect(user.password).to eq("password123")
   end
+
+  it 'signs up a user' do 
+    User.sign_up(name: 'Test', email: 'test@example.com', password: 'password123')
+    
 end
