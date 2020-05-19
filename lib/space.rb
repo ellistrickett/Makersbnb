@@ -6,6 +6,10 @@ class Space
     connect_to_database.exec("INSERT INTO space (space_name, description, price, dates_available) VALUES('#{space_name}', '#{description}', '#{price}', '#{dates_available}');")
   end
 
+  def self.view_spaces
+    connect_to_database.exec("SELECT * FROM space")
+  end
+
   private
 
   def self.connect_to_database
