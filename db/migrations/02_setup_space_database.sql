@@ -1,0 +1,3 @@
+CREATE DATABASE makersbnb;
+CREATE DATABASE makersbnb_test;
+CREATE TABLE space(id SERIAL PRIMARY KEY, user_id INTEGER NOT NULL, space_name VARCHAR(100) NOT NULL, description VARCHAR(250) NOT NULL, price MONEY NOT NULL, dates_available VARCHAR(60) NOT NULL); 

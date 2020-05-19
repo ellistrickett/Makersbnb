@@ -163,8 +163,6 @@ I can view rooms.
 | class | methods |
 | --- | --- |
 | Space | @name |
-| | @price |
-| | @dates_available |
 | | .add_space(name, description, price, dates_available) |
 | | .view_spaces |
 
