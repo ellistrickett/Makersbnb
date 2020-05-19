@@ -13,11 +13,11 @@ Create a clone of the Airbnb website!
 
 - Any signed-up user can list a new space.
 
-As a user, 
+As a user,
 So I can have an account,
 I am able to sign up.
 
-As a user, 
+As a user,
 So I can interact with the website,
 I am able to log in.
 
@@ -41,7 +41,7 @@ I am able to list multiple spaces.
 
 - Users should be able to name their space, provide a short description of the space, and a price per night.
 
-As a user, 
+As a user,
 So I can name my space,
 I can give my space a name.
 
@@ -49,7 +49,7 @@ As a user,
 So that I can advertise my space,
 I can write a short description for my space.
 
-As a user, 
+As a user,
 So that others know how much my space costs,
 I can give it a price per night.
 
@@ -58,7 +58,7 @@ I can give it a price per night.
 
 - Users should be able to offer a range of dates where their space is available.
 
-As a user, 
+As a user,
 So I can show when the space is available,
 I want to make the space available to book over a range of dates.
 
@@ -68,7 +68,7 @@ I want to make the space available to book over a range of dates.
 - Any signed-up user can request to hire any space for one night, and this should be approved by the user that owns that space.
 
 As a user,
-So that I can rent a space, 
+So that I can rent a space,
 I need to be able to request the property on a certain date.
 
 As a user,
@@ -81,7 +81,7 @@ I need to be able to see my requests and approve them.
 
 - Nights for which a space has already been booked should not be available for users to book that space.
 
-As a user, 
+As a user,
 So that a space can't be double booked,
 I shouldn't be able to book a space on those dates
 
@@ -111,11 +111,11 @@ My space is still available to book until I have confirmed a request.
 
 - Extras
 
-As a user, 
+As a user,
 so i can book an ad,
 I am able to log in.
 
-As a user, 
+As a user,
 I can view rooms.
 
 ```
@@ -141,7 +141,8 @@ I can view rooms.
 | NAME OF SPACE | VARCHAR(100) |
 | DESCRIPTION | VARCHAR(250) |
 | PRICE | Integer |
-| AVAILABILTY | Array |
+| DATES AVAILABLE | VARCHAR |
+
 
 `CONFIRMED BOOKING` table:
 
@@ -151,6 +152,8 @@ I can view rooms.
 | USER ID (guest) | VARCHAR(100) (FOREIGN KEY)  |
 | SPACE ID  | (FOREIGN KEY) |
 | DATE OF BOOKING | DATE |
+
+
 
 ## Models
 
@@ -178,7 +181,3 @@ I can view rooms.
 | | .decline_request |
 | | .add_space(name, description, price, dates_available) |
 | | ._update_dates_available |
-
-
-
-
