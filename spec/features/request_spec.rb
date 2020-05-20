@@ -1,25 +1,25 @@
-# require_relative '../web_helper'
-#
-# feature 'request space' do
-#
-#   scenario 'user can request a space' do
-#     sign_up
-#     log_in
-#     add_request
-#     click_button 'Request Space'
-#     fill_in 'request_date', with: '010212'
-#     click_button 'Request Space'
-#   end
-#
-#   scenario 'user can access request page' do
-#     sign_up
-#     log_in
-#     add_request
-#     click_button 'Request Space'
-#     expect(page).to have_content 'Request a space'
-#   end
-#
-# end
+require_relative '../web_helper'
+
+feature 'request space' do
+
+  scenario 'user can request a space' do
+    sign_up
+    log_in
+    add_request
+    click_button 'Request to Book Space'
+    fill_in 'request_date', with: '010212'
+    click_button 'Request Space'
+  end
+
+  scenario 'user can access request page' do
+    sign_up
+    log_in
+    add_request
+    click_button 'Request to Book Space'
+    expect(page).to have_content 'Request to book a space:'
+  end
+
+end
 
 
 # FOR VIEW!
