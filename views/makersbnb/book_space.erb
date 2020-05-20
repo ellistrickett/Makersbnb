@@ -4,3 +4,10 @@
   <input type="text" name="booking_date" placeholder="Date">
   <input type="submit" value="Book Space">
 </form>
+<%= @booking_id %>
+
+<% @booking.each do |list_booking| %>
+  <% if list_booking['id'] == @booking_id %>
+    <%= list_booking['dates_available'] %>
+  <% end %>
+<% end %>
