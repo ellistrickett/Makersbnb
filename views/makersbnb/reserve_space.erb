@@ -1,17 +1,17 @@
 <h1>Reserve a space</h1>
 
 <form action="/makersbnb-reserve" method="post">
-  <input type="text" name="reserve_date" placeholder="Date">
+  <% @reserve.each do |reserve_list| %>
+    <% if reserve_list['id'] == @reserve_id %>
+    <% days_available = JSON.parse(reserve_list['dates_available']) %>
+      <span>
+        <select name="reserve_day">
+          <% days_available.each do |days| %>
+            <option value="<%= days %>"><%= days %></option>
+          <% end %>
+        </select> 
+      </span>
+    <% end %>
+  <% end %>
   <input type="submit" value="Reserve Space">
 </form>
-
-<% @reserve.each do |reserve_list| %>
-  <% if reserve_list['id'] == @reserve_id %>
-    <% days = reserve_list['dates_available'] %>
-      <%= day = days.split(",") %>
-      <br>
-      Start day: <%= day[0] %>
-      <br/>
-      end day: <%= day[1] %>
-  <% end %>
-<% end %>

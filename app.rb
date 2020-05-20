@@ -52,7 +52,7 @@ class MakersBnB < Sinatra::Base
 
   post '/makersbnb-reserve' do
     user = session[:user]
-    ReserveSpace.reserve_space(user_id: user.user_id, space_id: session[:space_id], date: params[:reserve_date])  #space_id and user_id will be passed as session variables
+    ReserveSpace.reserve_space(user_id: user.user_id, space_id: session[:space_id], date: params[:reserve_day])  #space_id and user_id will be passed as session variables
     redirect '/makersbnb'
   end
 

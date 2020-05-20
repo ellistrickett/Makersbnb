@@ -14,7 +14,10 @@ Your user ID <%= @user.user_id %>
       Name: <%= get_space['space_name'] %>
       Description: <%= get_space['description'] %>
       Price: <%= get_space['price'] %>
-      Dates Available: <%= get_space['dates_available'] %>
+      <br/>
+      Dates Available: 
+      <%= JSON.parse(get_space['dates_available']) %>
+
       <form action="/makersbnb/reserve-space/<%= get_space['id'] %>" method='get'>
         <input value='Reserve Space' type='submit'>
       </form>
