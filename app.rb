@@ -34,6 +34,11 @@ class MakersBnB < Sinatra::Base
     erb :'makersbnb/space'
   end
 
+  get '/requests' do 
+    @user = session[:user]
+    erb :'requests'
+  end
+
   get '/makersbnb/add-space' do
     erb :'makersbnb/add_space'
   end
