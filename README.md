@@ -180,5 +180,4 @@ I can view rooms.
 | Request | .see_requests(bookings?) |
 | | .approve_request |
 | | .decline_request |
-| | .add_space(name, description, price, dates_available) |
 | | ._update_dates_available |

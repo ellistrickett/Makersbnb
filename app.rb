@@ -60,5 +60,9 @@ class MakersBnB < Sinatra::Base
     redirect '/makersbnb'
   end
 
+  get '/template' do
+    erb :'template'
+  end
+
   run! if app_file == $0
 end
