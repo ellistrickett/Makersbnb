@@ -58,7 +58,7 @@ class MakersBnB < Sinatra::Base
 
   post '/makersbnb' do
     user = session[:user]
-    Space.add_space(user_id: user.user_id, space_name: params[:name], description: params[:description], price: params[:price], dates_available: {start_day: params[:start_day], start_month: params[:start_month]})
+    Space.add_space(user_id: user.user_id, space_name: params[:name], description: params[:description], price: params[:price], dates_available: "#{params[:start_day]}-#{params[:start_month]}")
     redirect '/makersbnb'
   end
 

@@ -14,11 +14,7 @@ feature 'add space to MakersBnB' do
     sign_up
     log_in
     visit('/makersbnb/add-space')
-    fill_in 'name', with: 'Room'
-    fill_in 'description', with: 'Room Description'
-    fill_in 'price', with: 50.00
-    fill_in 'dates_available', with: '01.01'
-    click_button 'Add Space'
+    add_booking
     expect(current_path).to eq '/makersbnb'
     expect(page).to have_content 'Room Description'
   end
