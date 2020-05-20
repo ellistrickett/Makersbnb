@@ -33,7 +33,7 @@ describe Space do
         space = Space.view_spaces
         
         space.each do |delete_space| 
-          p delete_space
+          # p delete_space
           expect(delete_space['1']).to eq nil
         end
   

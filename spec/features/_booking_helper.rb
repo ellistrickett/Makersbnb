@@ -1,5 +1,5 @@
 
-def add_booking
+def add_reserve
   visit('/makersbnb/add-space')
   fill_in 'name', with: 'Room'
   fill_in 'description', with: 'Room Description'

@@ -1,12 +1,12 @@
 require 'pg'
 
-class Booking
+class ReserveSpace
 
-  def self.book_space(user_id:, space_id:, date:)
+  def self.reserve_space(user_id:, space_id:, date:)
     connect_to_database.exec("INSERT INTO booking (user_id, space_id, date) VALUES('#{user_id}', '#{space_id}', '#{date}');")
   end
 
-  def self.view_book_space
+  def self.view_reserve_space
     connect_to_database.exec("SELECT * FROM booking")
   end
 

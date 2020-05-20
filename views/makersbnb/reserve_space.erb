@@ -1,0 +1,17 @@
+<h1>Reserve a space</h1>
+
+<form action="/makersbnb-reserve" method="post">
+  <input type="text" name="reserve_date" placeholder="Date">
+  <input type="submit" value="Reserve Space">
+</form>
+
+<% @reserve.each do |reserve_list| %>
+  <% if reserve_list['id'] == @reserve_id %>
+    <% days = reserve_list['dates_available'] %>
+      <%= day = days.split(",") %>
+      <br>
+      Start day: <%= day[0] %>
+      <br/>
+      end day: <%= day[1] %>
+  <% end %>
+<% end %>

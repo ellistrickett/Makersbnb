@@ -1,22 +1,22 @@
 require_relative '../web_helper'
 
-feature 'book space' do
+feature 'reserve space' do
 
-  scenario 'user can request a space' do
+  scenario 'user can access reserve page' do
     sign_up
     log_in
-    add_booking
-    click_button 'Book Space'
-    fill_in 'booking_date', with: '010212'
-    click_button 'Book Space'
+    add_reserve
+    click_button 'Reserve Space'
+    expect(page).to have_content 'Reserve a space'
   end
 
-  scenario 'user can access booking page' do
+  scenario 'user can reserve a space' do
     sign_up
     log_in
-    add_booking
-    click_button 'Book Space'
-    expect(page).to have_content 'Book a space'
+    add_reserve
+    click_button 'Reserve Space'
+    click_button 'Reserve Space'
+    expect(current_path).to eq '/makersbnb'
   end
 
 end

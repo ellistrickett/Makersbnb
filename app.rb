@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require './lib/space'
-require './lib/booking'
+require './lib/reserve_space'
 require './lib/user'
 
 class MakersBnB < Sinatra::Base
@@ -29,7 +29,7 @@ class MakersBnB < Sinatra::Base
 
   get '/makersbnb' do
     @user = session[:user]
-    @booking = Booking.view_book_space
+    @reserve = ReserveSpace.view_reserve_space
     @space = Space.view_spaces
     erb :'makersbnb/space'
   end
@@ -38,11 +38,11 @@ class MakersBnB < Sinatra::Base
     erb :'makersbnb/add_space'
   end
 
-  get '/makersbnb/book-space/:id' do
+  get '/makersbnb/reserve-space/:id' do
     session[:space_id] = params[:id]
-    @booking_id = params[:id]
-    @booking = Space.view_spaces
-    erb :'makersbnb/book_space'
+    @reserve_id = params[:id]
+    @reserve = Space.view_spaces
+    erb :'makersbnb/reserve_space'
   end
 
   post '/makersbnb/delete-space/:id' do
@@ -50,15 +50,15 @@ class MakersBnB < Sinatra::Base
     redirect '/makersbnb'
   end
 
-  post '/makersbnb-book' do
+  post '/makersbnb-reserve' do
     user = session[:user]
-    Booking.book_space(user_id: user.user_id, space_id: session[:space_id], date: params[:booking_date])  #space_id and user_id will be passed as session variables
+    ReserveSpace.reserve_space(user_id: user.user_id, space_id: session[:space_id], date: params[:reserve_date])  #space_id and user_id will be passed as session variables
     redirect '/makersbnb'
   end
 
   post '/makersbnb' do
     user = session[:user]
-    Space.add_space(user_id: user.user_id, space_name: params[:name], description: params[:description], price: params[:price], dates_available: "#{params[:start_day]}-#{params[:start_month]}")
+    Space.add_space(user_id: user.user_id, space_name: params[:name], description: params[:description], price: params[:price], dates_available: "#{params[:start_day]} #{params[:start_month]} 2020, #{params[:end_day]} #{params[:end_month]} 2020")
     redirect '/makersbnb'
   end
 
