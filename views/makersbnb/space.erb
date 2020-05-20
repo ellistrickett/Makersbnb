@@ -17,7 +17,7 @@ Your user ID <%= @user.user_id %>
       Description: <%= get_space['description'] %>
       Price: <%= get_space['price'] %>
       Dates Available: <%= get_space['dates_available'] %>
-      <form action="/makersbnb/book-space/<%= get_space['id'] %>" method='get'>
+      <form action="/makersbnb/request-space/<%= get_space['id'] %>" method='get'>
         <input value='Book Space' type='submit'>
       </form>
       <% if get_space['user_id'] == @user.user_id %>
@@ -25,16 +25,6 @@ Your user ID <%= @user.user_id %>
           <input value='Delete Space' type='submit'>
         </form>
       <% end %>
-    </li>
-  </ul>
-<% end %>
-
-<% @booking.each do |get_booking| %>
-  <ul>
-    <li>
-      User ID: <%= get_booking['user_id'] %>
-      Space ID: <%= get_booking['space_id'] %>
-      Date: <%= get_booking['date'] %>
     </li>
   </ul>
 <% end %>

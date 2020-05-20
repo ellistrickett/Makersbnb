@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require './lib/space'
-require './lib/booking'
+require './lib/request'
 require './lib/user'
 
 class MakersBnB < Sinatra::Base
@@ -29,12 +29,12 @@ class MakersBnB < Sinatra::Base
 
   get '/makersbnb' do
     @user = session[:user]
-    @booking = Booking.view_book_space
+    # @request = Request.view_request_space
     @space = Space.view_spaces
     erb :'makersbnb/space'
   end
 
-  get '/requests' do 
+  get '/requests' do
     @user = session[:user]
     erb :'requests'
   end
@@ -43,9 +43,9 @@ class MakersBnB < Sinatra::Base
     erb :'makersbnb/add_space'
   end
 
-  get '/makersbnb/book-space/:id' do
+  get '/makersbnb/request-space/:id' do
     session[:space_id] = params[:id]
-    erb :'makersbnb/book_space'
+    erb :'makersbnb/request_space'
   end
 
   post '/makersbnb/delete-space/:id' do
@@ -53,9 +53,9 @@ class MakersBnB < Sinatra::Base
     redirect '/makersbnb'
   end
 
-  post '/makersbnb-book' do
+  post '/makersbnb-request' do
     user = session[:user]
-    Booking.book_space(user_id: user.user_id, space_id: session[:space_id], date: params[:booking_date])  #space_id and user_id will be passed as session variables
+    Request.request_space(user_id: user.user_id, space_id: session[:space_id], date: params[:request_date])  #space_id and user_id will be passed as session variables
     redirect '/makersbnb'
   end
 

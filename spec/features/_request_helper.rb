@@ -1,5 +1,5 @@
 
-def add_booking
+def add_request
   click_on 'Add Space'
   fill_in 'name', with: 'Room'
   fill_in 'description', with: 'Room Description'
