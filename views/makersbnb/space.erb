@@ -18,9 +18,11 @@ Your user ID <%= @user.user_id %>
       <form action="/makersbnb/book-space/<%= get_space['id'] %>" method='get'>
         <input value='Book Space' type='submit'>
       </form>
-      <form action="/makersbnb/delete-space/<%= get_space['id'] %>" method='post'>
-        <input value='Delete Space' type='submit'>
-      </form>
+      <% if get_space['user_id'] == @user.user_id %>
+        <form action="/makersbnb/delete-space/<%= get_space['id'] %>" method='post'>
+          <input value='Delete Space' type='submit'>
+        </form>
+      <% end %>
     </li>
   </ul>
 <% end %>
