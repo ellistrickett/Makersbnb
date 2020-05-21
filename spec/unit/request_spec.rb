@@ -42,4 +42,18 @@ describe Request do
      end
     end
 
+    describe '.decline_requests' do
+      it 'able to decline requests made' do
+        Space.add_space(user_id: 1, space_name: 'Room', description: 'Room Description', price: '50', dates_available: '1 January 2020, 3 January 2020')
+        ReserveSpace.reserve_space(user_id: 1, space_id: 8, date: '1 January 2020')
+        Request.decline_space(id: 8)
+  
+        decline_space = ReserveSpace.view_reserve_space
+        
+        decline_space.each do |decline|
+          expect(decline['requests']).to eq 'Booking Declined'
+        end
+       end
+      end
+
 end
