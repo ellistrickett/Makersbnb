@@ -6,8 +6,34 @@ Your user ID <%= @user.user_id %>
 
 <h3>As a Landlord</h3>
 
-<% @reserve.each do |booking| %>
-  <%= booking %>
+<% @space.each do |space| %>
+  <% if @user.user_id == space['user_id'] %>
+  <ul>
+    <li>
+    <%= space %>
+
+    <form action="/makersbnb/requests/<%= @user.user_id %>" method="post">
+      <% @reserve.each do |reserve| %>
+      <ul>
+        <li>
+          <%= reserve %>
+          <br/>
+          <span>
+              <select name="requests">
+                  <option value="Booking Confirmed">Booking Confirmed</option>
+                  <option value="Booking Declined">Booking Declined</option>
+              </select> 
+            </span>
+          <input type="submit" value="Submit">
+        </li>
+      </ul>
+    <% end %>
+  </form>
+ 
+    </li>
+  </ul>
+
+  <% end %>
 <% end %>
 
 <form action="/makersbnb/requests/<%= @user.user_id %>" method="post">
@@ -29,3 +55,9 @@ Your user ID <%= @user.user_id %>
 </form>
 
 <h3>As a Customer</h3>
+
+<% @reserve.each do |booking| %>
+  <% if @user.user_id == booking['user_id'] %>
+    <%= booking %>
+  <% end %>
+<% end %>

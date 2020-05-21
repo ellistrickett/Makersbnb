@@ -48,6 +48,7 @@ class MakersBnB < Sinatra::Base
 
   get '/makersbnb/user/:id' do
     @user = session[:user]
+    @space = Space.view_spaces
     @reserve = ReserveSpace.view_reserve_space
     erb :'user/user_account'
   end
