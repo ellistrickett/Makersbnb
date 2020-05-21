@@ -15,6 +15,19 @@ describe Request do
      end
    end
 
+   describe 'Able to see requests as pending' do
+    it 'able to approve requests made' do
+      Space.add_space(user_id: 1, space_name: 'Room', description: 'Room Description', price: '50', dates_available: '1 January 2020, 3 January 2020')
+      ReserveSpace.reserve_space(user_id: 1, space_id: 1, date: '1 January 2020')
+
+      approve_space = ReserveSpace.view_reserve_space
+      
+      approve_space.each do |approve|
+        expect(approve['requests']).to eq 'Pending'
+      end
+     end
+    end
+  
    describe '.approve_requests' do
     it 'able to approve requests made' do
       Space.add_space(user_id: 1, space_name: 'Room', description: 'Room Description', price: '50', dates_available: '1 January 2020, 3 January 2020')
