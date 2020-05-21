@@ -54,8 +54,10 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/makersbnb/requests/:id' do
-    space_id = params[:space_id]
-    params[:requests] == "Booking Confirmed" ? Request.approve_space(id: 43) : Request.decline_space(id: 43)
+    p params
+    p params[:space_id]
+    p params[:requests]
+    params[:requests] == "Booking Confirmed" ? Request.approve_space(id: 45) : Request.decline_space(id: 45)
     redirect "/makersbnb/user/#{session[:user].user_id}"
   end
 
