@@ -2,6 +2,7 @@ require 'sinatra/base'
 require './lib/space'
 require './lib/reserve_space'
 require './lib/user'
+require './lib/request'
 
 class MakersBnB < Sinatra::Base
   enable :sessions
@@ -43,6 +44,18 @@ class MakersBnB < Sinatra::Base
     @reserve_id = params[:id]
     @reserve = Space.view_spaces
     erb :'makersbnb/reserve_space'
+  end
+
+  get '/makersbnb/user/:id' do
+    @user = session[:user]
+    @reserve = ReserveSpace.view_reserve_space
+    erb :'user/user_account'
+  end
+
+  post '/makersbnb/requests/:id' do
+    space_id = params[:space_id]
+    params[:requests] == "Booking Confirmed" ? Request.approve_space(id: 43) : Request.decline_space(id: 43)
+    redirect "/makersbnb/user/#{session[:user].user_id}"
   end
 
   post '/makersbnb/delete-space/:id' do

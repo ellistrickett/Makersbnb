@@ -7,6 +7,10 @@ Your user ID <%= @user.user_id %>
   <input value='Add Space' type='submit'>
 </form>
 
+<form action="/makersbnb/user/<%= @user.user_id %>" method='get'>
+  <input value='User Account' type='submit'>
+</form>
+
 <% @space.each do |get_space| %>
   <ul>
     <li>
