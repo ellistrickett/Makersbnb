@@ -13,8 +13,8 @@ feature 'add space to MakersBnB' do
   scenario 'able to add space' do
     sign_up
     log_in
-    visit('/makersbnb/add-space')
-    add_reserve
+    # visit('/makersbnb/add-space')
+    add_request
     expect(current_path).to eq '/makersbnb'
     expect(page).to have_content 'Room Description'
   end
