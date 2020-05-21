@@ -2,9 +2,14 @@
 
 <form action='/makersbnb' method='post' >
   <input placeholder='Name' type='text' name='name'>
-  <input placeholder='Description' type='text' name='description'>
+  <br>
+  <br>
+  <textarea id="description" name="description" placeholder="Describe your space.." maxlength="250" style="width:250px;height:125px"></textarea>
+  <br>
+  <br>
   <input placeholder='Price' type='text' name='price'>
   <br/>
+  <br>
   From:
   <span>
       <select name="start_month">
@@ -20,7 +25,7 @@
           <option value="October">October</option>
           <option value="November">November</option>
           <option value="December">December</option>
-      </select> 
+      </select>
   </span>
   <span>
       <select name="start_day">
@@ -58,7 +63,7 @@
       </select>
   </span>
   <br/>
-  To:
+  Until:
   <span>
       <select name="end_month">
           <option value="January">January</option>
@@ -73,7 +78,7 @@
           <option value="October">October</option>
           <option value="November">November</option>
           <option value="December">December</option>
-      </select> 
+      </select>
   </span>
   <span>
       <select name="end_day">
@@ -111,5 +116,6 @@
       </select>
   </span>
   <br/>
+  <br>
   <input value='Add Space' type='submit'>
 </form>
