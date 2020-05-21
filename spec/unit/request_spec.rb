@@ -53,7 +53,6 @@ describe Request do
   end
 
   describe '.approve_request_space' do
-
     it 'able to approve requested spaces' do
       Request.request_space(user_id: 5, space_id: 18, date:'010212')
       Request.decline_space(user_id: 5, space_id: 18)
@@ -66,23 +65,15 @@ describe Request do
         expect(decline_object['status']).to eq 'Request Declined'
       end
     end
-
   end
 
   describe '.update_dates_available' do
-
     it 'able to update dates for spaces' do
-      Space.add_space(user_id: 1, space_name: 'Room', description: 'Room Description', price: '50', dates_available: '1 January 2020, 3 January 2020')
-      Request.update_dates_available(space_id: 1, updated_dates: '1 January 2020')
-      connect_to_database = PG.connect dbname: 'makersbnb_test'
-      space = connect_to_database.exec("SELECT * FROM space")
-
-
-      space.each do |space_object|
-        expect(space_object['dates_available']).not_to include '1 January 2020'
+      space = Space.add_space(user_id: 1, space_name: 'Room', description: 'Room Description', price: '50', dates_available: 'Wed 01 Jan 2020, Fri 3 Jan 2020')
+      Request.update_dates_available(space_id: 1, date: 'Wed 01 Jan 2020')
+      space.each do |result|
+      expect(result['dates_available']).to eq ['Thu 2 Jan 2020', 'Fri 3 Jan 2020']
       end
     end
-
   end
-
 end

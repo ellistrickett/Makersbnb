@@ -19,16 +19,13 @@ class Request
     connect_to_database.exec("UPDATE requests SET status = 'Request Declined' WHERE user_id = '#{user_id}' AND space_id = '#{space_id}';")
   end
 
-  def self.update_dates_available(space_id:, updated_dates:)
-    old_dates = connect_to_database.exec("SELECT dates_available FROM space WHERE id = '#{space_id}'")
-    p "hey"
-    old_dates.each do |days|
-      p days
-      p "hey inside"
-    end
-
-    # new_dates = old_dates.delete(updated_dates)
-    # connect_to_database.exec("UPDATE space SET dates_available = '#{new_dates}' WHERE id = '#{space_id}';")
+  def self.update_dates_available(space_id:, date:)
+    p space_id 
+    p date
+    date_available = connect_to_database.exec("SELECT dates_available FROM space;")
+    p date_available.first
+    new_dates = date_available.first.delete(date)
+    connect_to_database.exec("UPDATE space SET dates_available = '#{new_dates}' WHERE id = '#{space_id}';")
   end
 
 end
