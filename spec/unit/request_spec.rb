@@ -69,5 +69,20 @@ describe Request do
 
   end
 
+  describe '.update_dates_available' do
+
+    it 'able to update dates for spaces' do
+      Space.add_space(user_id: 1, space_name: 'Room', description: 'Room Description', price: '50', dates_available: '1 January 2020, 3 January 2020')
+      Request.update_dates_available(space_id: 1, updated_dates: '1 January 2020')
+      connect_to_database = PG.connect dbname: 'makersbnb_test'
+      space = connect_to_database.exec("SELECT * FROM space")
+
+
+      space.each do |space_object|
+        expect(space_object['dates_available']).not_to include '1 January 2020'
+      end
+    end
+
+  end
 
 end
