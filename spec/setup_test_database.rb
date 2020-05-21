@@ -5,5 +5,5 @@ def setup_test_database
   connection = PG.connect(dbname: 'makersbnb_test')
 
   # Clear the users table
-  connection.exec("TRUNCATE users, space, booking;")
+  connection.exec("TRUNCATE users, space, requests;")
 end
