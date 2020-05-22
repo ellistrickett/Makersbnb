@@ -72,14 +72,10 @@ class MakersBnB < Sinatra::Base
     erb :'template'
   end
 
-  # get '/makersbnb' do
-  #   @user = session[:user]
-  #   # @request = Request.view_request_space
-  #   @space = Space.view_spaces
-  #   erb :'makersbnb/mockuptest'
-  # end
-
-
+  get '/goodbye' do 
+    @user = session[:user]
+    erb :'goodbye', :layout => :pre_auth
+  end
 
   run! if app_file == $0
 end
