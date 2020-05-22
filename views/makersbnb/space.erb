@@ -1,43 +1,40 @@
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>MakersBnB</title>
-</head>
 
-
-<h1>Spaces</h1>
-
-<a href="/requests">View Requests</a>
-
-Welcome, <%= @user.real_name %> <br/>
-Your user ID <%= @user.user_id %>
-
-<form action='/makersbnb/add-space' method='get'>
+<!-- <form action='/makersbnb/add-space' method='get'>
   <input value='Add Space' type='submit'>
-</form>
+</form> -->
 
-<% @space.each do |get_space| %>
-  <ul>
-    <li>
-      ID: <%= get_space['id'] %>
-      Name: <%= get_space['space_name'] %>
-      Description: <%= get_space['description'] %>
-      Price: <%= get_space['price'] %>
+<div class="container-fluid text-center">
+  <div class="row content">
 
-      <br/>
-      Dates Available:
+    <div class="col-sm-8 text-left">
+      <h1>Welcome <%= @user.real_name %></h1>
+      <hr>
+      <h4>Available Spaces:</h4>
+      <p><% @space.each do |get_space| %>
+        <ul>
+          <li>
+            ID: <%= get_space['id'] %>
+            Name: <%= get_space['space_name'] %>
+            Description: <%= get_space['description'] %>
+            Price: <%= get_space['price'] %>
+
+            <br/>
+            Dates Available:
 
 
-      <form action="/makersbnb/request-space/<%= get_space['id'] %>" method='get'>
-        <input value='Request to Book Space' type='submit'>
-      </form>
-      <% if get_space['user_id'] == @user.user_id %>
-        <form action="/makersbnb/delete-space/<%= get_space['id'] %>" method='post'>
-          <input value='Delete Space' type='submit'>
-        </form>
-      <% end %>
-    </li>
-  </ul>
-<% end %>
+            <form action="/makersbnb/request-space/<%= get_space['id'] %>" method='get'>
+              <input value='Request to Book Space' type='submit'>
+            </form>
+            <% if get_space['user_id'] == @user.user_id %>
+              <form action="/makersbnb/delete-space/<%= get_space['id'] %>" method='post'>
+                <input value='Delete Space' type='submit'>
+              </form>
+            <% end %>
+          </li>
+        </ul>
+      <% end %></p>
+    </div>
+
+  </div>
+</div>

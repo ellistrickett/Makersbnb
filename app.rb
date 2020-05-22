@@ -27,12 +27,12 @@ class MakersBnB < Sinatra::Base
     redirect '/makersbnb'
   end
 
-  # get '/makersbnb' do
-  #   @user = session[:user]
-  #   # @request = Request.view_request_space
-  #   @space = Space.view_spaces
-  #   erb :'makersbnb/space'
-  # end
+  get '/makersbnb' do
+    @user = session[:user]
+    # @request = Request.view_request_space
+    @space = Space.view_spaces
+    erb :'makersbnb/space'
+  end
 
   get '/requests' do
     @user = session[:user]
@@ -40,6 +40,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/makersbnb/add-space' do
+    @user = session[:user]
     erb :'makersbnb/add_space'
   end
 
@@ -71,12 +72,12 @@ class MakersBnB < Sinatra::Base
     erb :'template'
   end
 
-  get '/makersbnb' do
-    @user = session[:user]
-    # @request = Request.view_request_space
-    @space = Space.view_spaces
-    erb :'makersbnb/mockuptest'
-  end
+  # get '/makersbnb' do
+  #   @user = session[:user]
+  #   # @request = Request.view_request_space
+  #   @space = Space.view_spaces
+  #   erb :'makersbnb/mockuptest'
+  # end
 
 
 
