@@ -19,6 +19,16 @@
         Date Requested: <%= request['date'] %><br>
         Booked by: <%= request['user_id'] %><br>
         Status: <%= request['status'] %><br><br>
+
+        <form action=“/makersbnb-request” method=“post”>
+              <span>
+                <select name=“request_date”>
+                    <option value=<%= days %><%= days %></option>
+                </select>
+              </span>
+          <input type=“submit” value=“Request Space”>
+        </form>
+
       <% end %>
     <% end %>
 

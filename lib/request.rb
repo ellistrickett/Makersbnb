@@ -20,7 +20,7 @@ class Request
   end
 
   def self.update_dates_available(space_id:, date:)
-    p space_id 
+    p space_id
     p date
     date_available = connect_to_database.exec("SELECT dates_available FROM space;")
     p date_available.first

@@ -52,6 +52,30 @@ feature 'request space' do
     expect(page).to have_content 'Sun 01 Mar 2020'
   end
 
+
+  scenario 'as a landlord able to accept requests' do
+    sign_up
+    log_in
+    add_space
+
+    sign_up_customer
+    log_in_customer
+    click_button 'Request to Book Space'
+    select 'Sun 01 Mar 2020', from: 'request_date'
+    click_button 'Request Space'
+
+    log_in
+
+    visit('/requests-landlord')
+    select 'Accept', from: 'approve_or_deny'
+    expect(page).to have_content 'Request Approved'
+
+    log_in_customer
+    visit('/requests-customer')
+    expect(page).to have_content 'Request Approved'
+  end
+
+
 end
 
 
