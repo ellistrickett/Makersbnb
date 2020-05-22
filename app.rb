@@ -48,6 +48,7 @@ class MakersBnB < Sinatra::Base
     session[:space_id] = params[:id]
     @reserve_id = params[:id]
     @reserve = Space.view_spaces
+    @user = session[:user]
     erb :'makersbnb/request_space'
   end
 
@@ -57,8 +58,8 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/makersbnb-request' do
-    user = session[:user]
-    Request.request_space(user_id: user.user_id, space_id: session[:space_id], date: params[:request_date])  #space_id and user_id will be passed as session variables
+    @user = session[:user]
+    Request.request_space(user_id: user.user_id, space_id: session[:space_id], date: params[:request_date])
     redirect '/makersbnb'
   end
 
@@ -72,7 +73,7 @@ class MakersBnB < Sinatra::Base
     erb :'template'
   end
 
-  get '/goodbye' do 
+  get '/goodbye' do
     @user = session[:user]
     erb :'goodbye', :layout => :pre_auth
   end
