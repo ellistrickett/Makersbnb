@@ -7,7 +7,7 @@ class MakersBnB < Sinatra::Base
   enable :sessions
 
   get '/' do
-    erb :"signup"
+    erb :"signup", :layout => :pre_auth
   end
 
   post '/sign-up-user' do
@@ -17,7 +17,7 @@ class MakersBnB < Sinatra::Base
 
   get '/login' do
     @user = session[:user]
-    erb :"login"
+    erb :"login" , :layout => :pre_auth
   end
 
   post '/log-in-details' do
@@ -49,6 +49,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/makersbnb/add-space' do
+    @user = session[:user]
     erb :'makersbnb/add_space'
   end
 
@@ -56,6 +57,7 @@ class MakersBnB < Sinatra::Base
     session[:space_id] = params[:id]
     @reserve_id = params[:id]
     @reserve = Space.view_spaces
+    @user = session[:user]
     erb :'makersbnb/request_space'
   end
 
@@ -65,8 +67,8 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/makersbnb-request' do
-    user = session[:user]
-    Request.request_space(user_id: user.user_id, space_id: session[:space_id], date: params[:request_date])  #space_id and user_id will be passed as session variables
+    @user = session[:user]
+    Request.request_space(user_id: @user.user_id, space_id: session[:space_id], date: params[:request_date])
     redirect '/makersbnb'
   end
 
@@ -76,7 +78,7 @@ class MakersBnB < Sinatra::Base
     redirect '/requests-landlord'
   end
 
-  post '/makersbnb' do
+  post '/makersbnb-add' do
     user = session[:user]
     space_name = params[:name]
     Space.add_space(user_id: user.user_id, space_name: params[:name], description: params[:description], price: params[:price], dates_available: "#{params[:start_day]} #{params[:start_month]} 2020, #{params[:end_day]} #{params[:end_month]} 2020")
@@ -86,6 +88,14 @@ class MakersBnB < Sinatra::Base
   get '/template' do
     erb :'template'
   end
+
+  get '/goodbye' do
+    @user = session[:user]
+    session.clear
+    erb :'goodbye', :layout => :pre_auth
+  end
+
+
 
   run! if app_file == $0
 end

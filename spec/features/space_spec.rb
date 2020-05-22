@@ -5,7 +5,7 @@ feature 'add space to MakersBnB' do
     sign_up
     log_in
     visit('/makersbnb')
-    click_button 'Add Space'
+    click_on 'Add Space'
     expect(current_path).to eq '/makersbnb/add-space'
     expect(page).to have_content 'Add New Space'
   end
