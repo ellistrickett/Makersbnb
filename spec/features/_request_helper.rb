@@ -3,7 +3,7 @@
 # def add_reserve
 #   visit('/makersbnb/add-space')
 
-def add_request
+def add_space
   click_on 'Add Space'
   fill_in 'name', with: "Andrew's Cottage"
   fill_in 'description', with: 'Room Description'
