@@ -70,6 +70,12 @@ class MakersBnB < Sinatra::Base
     redirect '/makersbnb'
   end
 
+  post '/makersbnb-request-landlord' do
+    user = session[:user]
+    # params[:approve_or_deny] == "Approve Request" ? Request.approve_space(user_id:, space_id:) : Request.decline_space(user_id:, space_id:)
+    redirect '/requests-landlord'
+  end
+
   post '/makersbnb' do
     user = session[:user]
     space_name = params[:name]
