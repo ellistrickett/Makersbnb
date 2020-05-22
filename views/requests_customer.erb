@@ -9,19 +9,14 @@
 
 <h1>Your requests:</h1>
 
-<form action=“/” method=“post”>
-  <% @requests.each do |request| %>
-    <% if request["user_id"] == @user.user_id %>
-
-      <% @space.each do |each_space| %>
-        <% if each_space['id'] == request["space_id"] %>
-          <%= each_space['space_name'] %><br>
-        <% end %>
-      <% end%>
-
-      <%= request["date"] %><br>
-      <%= request["status"] %><br><br>
-
-    <% end %>
+<% @requests.each do |request| %>
+  <% if request["user_id"] == @user.user_id %>
+    <% @space.each do |each_space| %>
+      <% if each_space['id'] == request["space_id"] %>
+        <%= each_space['space_name'] %><br>
+      <% end %>
+    <% end%>
+    <%= request["date"] %><br>
+    <%= request["status"] %><br><br>
   <% end %>
-</form>
+<% end %>

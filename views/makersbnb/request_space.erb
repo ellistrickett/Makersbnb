@@ -5,10 +5,20 @@
     <title>MakersBnB</title>
 </head>
 
-
 <h1>Request to book a space:</h1>
 
 <form action="/makersbnb-request" method="post">
-  <input type="text" name="request_date" placeholder="Date">
+  <% @reserve.each do |reserve_list| %>
+    <% if reserve_list['id'] == @reserve_id %>
+    <% days_available = JSON.parse(reserve_list['dates_available']) %>
+      <span>
+        <select name="request_date">
+          <% days_available.each do |days| %>
+            <option value="<%= days %>"><%= days %></option>
+          <% end %>
+        </select> 
+      </span>
+    <% end %>
+  <% end %>
   <input type="submit" value="Request Space">
 </form>

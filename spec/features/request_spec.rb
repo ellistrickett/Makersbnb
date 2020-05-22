@@ -7,7 +7,8 @@ feature 'request space' do
     log_in
     add_space
     click_button 'Request to Book Space'
-    fill_in 'request_date', with: '010212'
+    # select 'Sun 01 Mar 2020', from: 'request_date'
+    select 'Sun 01 Mar 2020', :from => 'request_date'
     click_button 'Request Space'
   end
 
@@ -31,11 +32,11 @@ feature 'request space' do
     log_in_customer
     click_button 'Request to Book Space'
     # request to book a space - needs to change
-    select 'Wed 01 Mar 2020', from: 'request_date'
+    select 'Sun 01 Mar 2020', from: 'request_date'
     click_button 'Request Space'
 
-    visit('/requests-landlord')
-    expect(page).to have_content 'Wed 01 Mar 2020'
+    visit('/requests-customer')
+    expect(page).to have_content 'Sun 01 Mar 2020'
   end
 
   # scenario 'user can see their requests' do

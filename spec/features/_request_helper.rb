@@ -10,7 +10,7 @@ def add_space
   fill_in 'price', with: 50.00
   select 'March', from: 'start_month'
   select '1', from: 'start_day'
-  select 'April', from: 'start_month'
-  select '1', from: 'start_day'
+  select 'March', from: 'end_month'
+  select '5', from: 'end_day'
   click_button 'Add Space'
 end

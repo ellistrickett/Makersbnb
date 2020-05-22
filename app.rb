@@ -41,9 +41,6 @@ class MakersBnB < Sinatra::Base
     erb :'requests_customer'
   end
 
-
-
-
   get '/makersbnb/add-space' do
     erb :'makersbnb/add_space'
   end
