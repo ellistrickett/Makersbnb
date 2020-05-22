@@ -24,16 +24,16 @@ feature 'request space' do
     log_in
     # add_request needs to be add_space
     add_space
-    
+
     # log_out?
-  
+
     sign_up_customer
     log_in_customer
     click_button 'Request to Book Space'
     # request to book a space - needs to change
     select 'Wed 01 Mar 2020', from: 'request_date'
     click_button 'Request Space'
-  
+
     visit('/requests-landlord')
     expect(page).to have_content 'Wed 01 Mar 2020'
   end
@@ -43,21 +43,21 @@ feature 'request space' do
   #   log_in
   #   # add_request needs to be add_space
   #   add_request
-  
+
   #   # log_out?
-  
+
   #   sign_up_customer
   #   log_in_customer
   #   # request to book a space - needs to change
   #   click_button 'Request to Book Space'
-  
+
   #   fill_in('request_date', with: "01.01")
   #   click_button 'Request Space'
-  
+
   #   # log_out?
   #   log_in
   #   click_link('View Requests')
-  
+
   #   expect(page).to have_content '01.01'
   # end
 
