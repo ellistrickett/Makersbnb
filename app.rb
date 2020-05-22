@@ -34,7 +34,7 @@ class MakersBnB < Sinatra::Base
     erb :'makersbnb/space'
   end
 
-  get '/requests' do
+  get '/requests-landlord' do
     @user = session[:user]
     erb :'requests'
   end
