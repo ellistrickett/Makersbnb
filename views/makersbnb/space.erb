@@ -27,7 +27,7 @@ Your user ID <%= @user.user_id %>
       Price: <%= get_space['price'] %>
 
       <br/>
-      Dates Available:
+      Dates Available: <%= get_space['dates_available'] %>
 
 
       <form action="/makersbnb/request-space/<%= get_space['id'] %>" method='get'>
