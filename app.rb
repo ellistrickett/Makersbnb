@@ -7,7 +7,7 @@ class MakersBnB < Sinatra::Base
   enable :sessions
 
   get '/' do
-    erb :"signup"
+    erb :"signup", :layout => :pre_auth
   end
 
   post '/sign-up-user' do
@@ -17,7 +17,7 @@ class MakersBnB < Sinatra::Base
 
   get '/login' do
     @user = session[:user]
-    erb :"login"
+    erb :"login" , :layout => :pre_auth
   end
 
   post '/log-in-details' do
