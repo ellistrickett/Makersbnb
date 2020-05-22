@@ -75,8 +75,11 @@ class MakersBnB < Sinatra::Base
 
   get '/goodbye' do
     @user = session[:user]
+    session.clear
     erb :'goodbye', :layout => :pre_auth
   end
+
+
 
   run! if app_file == $0
 end
