@@ -18,4 +18,5 @@ feature 'add space to MakersBnB' do
     expect(current_path).to eq '/makersbnb'
     expect(page).to have_content 'Room Description'
   end
+
 end

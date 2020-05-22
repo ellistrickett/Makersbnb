@@ -1,16 +1,18 @@
 require 'pg'
 
-class Space 
+class Space
 
   def self.add_space(user_id:, space_name:, description:, price:, dates_available:)
     days_array = helper_days_available_space(dates_available)
+    space_name.sub! "'", "''"
+    description.sub! "'", "''"
     connect_to_database.exec("INSERT INTO space (user_id, space_name, description, price, dates_available) VALUES('#{user_id}', '#{space_name}', '#{description}', '#{price}', '#{days_array}');")
   end
-  
+
   def self.view_spaces
     connect_to_database.exec("SELECT * FROM space")
   end
-  
+
   def self.delete_space(id:)
     connect_to_database.exec("DELETE FROM space WHERE id = #{id}")
   end
