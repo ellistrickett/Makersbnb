@@ -1,14 +1,17 @@
 
-<h1>Your requests:</h1>
-
-<% @requests.each do |request| %>
-  <% if request["user_id"] == @user.user_id %>
-    <% @space.each do |each_space| %>
-      <% if each_space['id'] == request["space_id"] %>
-        <%= each_space['space_name'] %><br>
-      <% end %>
-    <% end%>
-    <%= request["date"] %><br>
-    <%= request["status"] %><br><br>
+<div class='col-sm-8 text-left'>
+  <h1>My Bookings:</h1>
+</div>
+<div class='col-sm-8 text-left'>
+  <% @requests.each do |request| %>
+    <% if request["user_id"] == @user.user_id %>
+      <% @space.each do |each_space| %>
+        <% if each_space['id'] == request["space_id"] %>
+          Property: <%= each_space['space_name'] %><br>
+        <% end %>
+      <% end%>
+      Date Requested: <%= request["date"] %><br>
+      Status: <%= request["status"] %><br><br>
+    <% end %>
   <% end %>
-<% end %>
+</div>

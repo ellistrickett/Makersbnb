@@ -1,11 +1,5 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>MakersBnB</title>
-</head>
 
-
+<div class='col-sm-8 text-left'>
 
 <h1>As a Landlord requests:</h1>
 
@@ -19,14 +13,14 @@
             Property: <%= space['space_name'] %><br>
             Date Requested: <%= request['date'] %><br>
             Booked by: <%= request['user_id'] %><br>
-            Status: <%= request['status'] %><br><br>
+            Status: <%= request['status'] %><br>
             <span>
               <select name='approve_or_deny'>
                   <option value="Approve Request">Approve Request</option>
                   <option value="Decline Request">Decline Request</option>
               </select>
             </span>
-          <input type="submit" value="Submit">
+          <input type="submit" value="Submit"><br><br><br>
         </form>
 
       <% end %>
@@ -36,11 +30,4 @@
   <% end %>
 <% end %>
 
-
-
-  <% # @requests.each do |request| %>
-
-  <% # if request['space_id'] %>
-  <% # end %>
-
-  <% # end %>
+</div>
