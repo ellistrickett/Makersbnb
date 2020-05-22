@@ -45,7 +45,7 @@ feature 'request space' do
     click_button 'Request to Book Space'
     select 'Sun 01 Mar 2020', from: 'request_date'
     click_button 'Request Space'
-    
+
     log_in
 
     visit('/requests-landlord')

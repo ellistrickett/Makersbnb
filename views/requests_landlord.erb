@@ -9,12 +9,28 @@
 
 <h1>As a Landlord requests:</h1>
 
-<% @requests.each do |request| %>
-  <% @space.each do |space| %>
+<% @space.each do |space| %>
+  <% if @user.user_id == space['user_id'] %>
 
-  <% if request['space_id'] %>
+
+    <% @requests.each do |request| %>
+      <% if space['id'] == request['space_id'] %>
+        Property: <%= space['space_name'] %><br>
+        Date Requested: <%= request['date'] %><br>
+        Booked by: <%= request['user_id'] %><br>
+        Status: <%= request['status'] %><br><br>
+      <% end %>
+    <% end %>
+
+
   <% end %>
-
-  <% end %>
-
 <% end %>
+
+
+
+  <% # @requests.each do |request| %>
+
+  <% # if request['space_id'] %>
+  <% # end %>
+
+  <% # end %>
