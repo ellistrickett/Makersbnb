@@ -59,13 +59,13 @@ class MakersBnB < Sinatra::Base
 
   post '/makersbnb-request' do
     @user = session[:user]
-    Request.request_space(user_id: user.user_id, space_id: session[:space_id], date: params[:request_date])
+    Request.request_space(user_id: @user.user_id, space_id: session[:space_id], date: params[:request_date])
     redirect '/makersbnb'
   end
 
-  post '/makersbnb' do
-    user = session[:user]
-    Space.add_space(user_id: user.user_id, space_name: params[:name], description: params[:description], price: params[:price], dates_available: "#{params[:start_day]} #{params[:start_month]} 2020, #{params[:end_day]} #{params[:end_month]} 2020")
+  post '/makersbnb-add' do
+    @user = session[:user]
+    Space.add_space(user_id: @user.user_id, space_name: params[:name], description: params[:description], price: params[:price], dates_available: "#{params[:start_day]} #{params[:start_month]} 2020, #{params[:end_day]} #{params[:end_month]} 2020")
     redirect '/makersbnb'
   end
 
@@ -75,8 +75,11 @@ class MakersBnB < Sinatra::Base
 
   get '/goodbye' do
     @user = session[:user]
+    session.clear
     erb :'goodbye', :layout => :pre_auth
   end
+
+
 
   run! if app_file == $0
 end
